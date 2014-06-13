@@ -116,7 +116,11 @@ body {
     text-transform: uppercase;
     top: 15px;
 }
-
+.gallery li 
+{
+     width:210px;
+    height:210px;
+}
 li.placeholder {
     list-style:none;
     width:210px;
