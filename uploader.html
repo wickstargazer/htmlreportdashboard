@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/custom.css">
+  
+    <script src="scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="scripts/swfupload.js" type="text/javascript"></script>
+    <script src="scripts/swfupload.queue.js" type="text/javascript"></script>
+    <script src="scripts/swfupload.swfobject.js" type="text/javascript"></script>
+    <script src="scripts/jquery.swfupload.js" type="text/javascript"></script>
+    <script src="scripts/jquery.sortable.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('.upload_button').swfupload({
+                upload_url: "your_upload_url",
+                post_params: {
+                    "AuthenticationToken": 'mostly-always-needed-in-different-platform'
+                },
+                file_types: "*.jpg;*.gif;*.png;*.tiff;*.bmp;*.jpeg",
+                file_types_description: "Media Files",
+                file_upload_limit: "50",
+                file_size_limit: "20 MB",
+                //file_types_description : "All Files",
+                flash_url: "scripts/swfupload.swf",
+                button_image_url: "scripts/icon.png",
+                button_placeholder_id: "swfUploadBtn",
+                button_width: 250,
+                button_height: 20,
+                button_text: '<span class="button">Select Media Files <span class="buttonSmall">(Max size 20 MB)</span></span>',
+                button_text_style: '.button { font-family: tahoma, Arial, sans-serif; font-size: 13pt; } .buttonSmall { font-size: 13pt; }',
+                button_text_top_padding: 0,
+                button_text_left_padding: 18,
+                button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+                button_cursor: SWFUpload.CURSOR.HAND,
+                debug: false,
+                custom_settings: {
+                    islist: true,
+                    upload_target: "progressbar",
+                    upload_bar: "progressbar"
+                }
+            });
+            $.swfupload.bindEvents('.upload_button');
+
+
+            $('.gallery > ul').sortable({
+                serialize: function (parent, children, isContainer) {
+                    return isContainer ? children.join() : '{"ThumbPath":null,"TempFileName":"' + $(parent).attr("data-tempfilename") + '","FileName":"' + $(parent).attr("data-filename") + '", "MediaType": "' + $(parent).attr("data-mediatype") + '"}'
+                }
+            });
+            $(".thumbnail .icon-remove").click(function () {
+                var liEl = $(this).parents("li");
+                var fileName = "";
+               
+                var   fileName = $(liEl).attr('data-filename');
+
+                var btn = $(this).parents('.uploadfilesection').find('.btn');
+                var ul = $(this).parents('ul');
+                $.swfupload.resetStats(btn, ul);
+                $(this).parents("li").remove();
+            });
+        });
+
+        function _setGalleryValue() {
+            var _mediaGallery = $('.upload_button').parents('.uploadfilesection').find('ul.media-items').sortable("serialize").get().join(",");
+            //var _mediaGalleryobj = JSON.parse("[" + _mediaGallery + "]");
+            $('#mediaGallery').val("[" + _mediaGallery + "]");
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+
+ <div class="uploadfilesection subsection gallery-section center-block">
+ <input type="hidden" name="mediaGallery" id="mediaGallery" value="" />
+            <div class="upload_button btn btn-default">
+                <span id="swfUploadBtn"></span> 
+            </div>
+            <div class="loading">
+                    <div id="progressbar" class="progress progress-striped" style="display:none;">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;"> <span class="sr-only">10% </span>
+                    </div>
+                     <div id="multiprogress"></div>
+                </div>
+            </div>
+
+          
+            <div class="gallery row center-block">
+                <ul id="media-items" class="media-items thumbnails" style="padding-left:0;"> 
+                  <!-- List of already uploaded files in the server --> 
+                        <li class='img-gallery-item col-xs-6 col-md-3' data-filename="xxx" data-mediatype="xxx" data-tempfilename="xxx"><a href='javascript:void(0);' class='thumbnail'><i class='glyphicon glyphicon-remove icon-remove' ></i><img src="xxx" alt="100%x200" data-src="holder.js/100%x200" /></a></li>
+                    <!-- List of already uploaded files in the server --> 
+                            
+                </ul>  <input type='hidden' value="" id="imgOrder" name="imgOrder" id="imgOrder"   />
+            </div>
+        </div>
+    </body>
+</html>

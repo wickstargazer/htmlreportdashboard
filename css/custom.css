@@ -1,0 +1,142 @@
+body {
+    /*  padding-top: 50px;*/
+    font-family: Tahoma,Verdana,Arial,Helvetica,sans-serif;
+    min-width:320px;
+}
+
+
+
+    .form_fieldset_upload {
+        min-height:300px;
+        margin-bottom:30px;
+    }
+
+    .loading { 
+        margin: 10px 0;
+    }
+    .swfupload {
+        display:block; 
+    }
+
+    .thumb-upload  {
+        width:100%;
+        height:auto;
+        max-height:500px;
+    }
+
+    .gallery li, .gallery li.a:hover,.gallery li > a > img  {
+
+        cursor:move!important;
+    }
+
+    .progress {
+        background-color:inherit;
+    }
+
+    li.img-gallery-item {
+        
+        list-style:none; 
+
+    }
+
+    li.img-gallery-item a img {
+       
+
+    }
+    li.img-gallery-item .icon-remove {
+             
+            float:right;
+    }
+
+    .ui-state-highlight {
+         height: 150px;
+        background-color: #CCC; 
+        width: 150px;
+        border: 1px solid #CCC;
+    }
+.form-contents {
+    background-color: #FAFAFA;
+    border-color: #E5E5E5 #EEEEEE #EEEEEE;
+    border-style: solid;
+    border-width: 1px 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05) inset;
+    margin: 0 -15px 15px;
+    padding: 45px 15px 15px;
+    position: relative;
+}
+
+
+.form-contents:after {
+    color: #BBBBBB;
+
+    font-size: 12px;
+    font-weight: 700;
+    left: 15px;
+    letter-spacing: 1px;
+    position: absolute;
+
+    top: 15px;
+}
+
+.form-contents + .subsection {
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-width: 1px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: -16px;
+}
+.form-contents + .subsection {
+    border-radius: 0;
+    border-width: 0 0 1px;
+    margin: -15px -15px 15px;
+}
+.subsection {
+    background-color: #F7F7F9;
+    border: 1px solid #E1E1E8;
+    border-radius: 4px;
+    margin-bottom: 14px;
+    padding: 9px 14px;
+}
+.gallery-section {
+
+   
+    padding: 45px 15px 15px;
+    position: relative;
+   
+}
+.gallery-section:after {
+    color: #BBBBBB;
+    content: "Gallery";
+    font-size: 12px;
+    font-weight: 700;
+    left: 15px;
+    letter-spacing: 1px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 15px;
+}
+
+li.placeholder {
+    list-style:none;
+    width:210px;
+    height:210px;
+    border:1px solid #DDDDDD;
+     border-radius: 4px;
+    background:#EFEFEF;
+    float:left;
+}
+li.dragged,tr.dragged {
+    margin:0 !important;
+    position:absolute;
+    z-index:3000;
+    opacity:0.7;
+    cursor:move !important;
+}
+
+li.img-gallery-item a img {
+}
+
+.gallery li, .gallery li.a:hover, .gallery li > a > img {
+    cursor: move !important;
+}
